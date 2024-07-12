@@ -1,0 +1,96 @@
+<section class="inputs">
+
+    <div class="inputs_botoes">
+        <form>
+            <mat-form-field class="inputs_botoes_select">
+            <mat-label>Nome Completo</mat-label>
+            <input matInput placeholder="Digite seu nome completo" [(ngModel)]="usuario.nome" name="nome">
+            </mat-form-field>
+        </form>
+
+        <form>
+            <mat-form-field class="inputs_botoes_select">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Digite seu email" [(ngModel)]="usuario.email" name="email">
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="inputs_botoes">
+        <mat-form-field class="inputs_botoes_select">
+            <mat-select placeholder="Selecione o tipo de transporte" [(ngModel)]="tipoTransporteTemporario">
+              <mat-option *ngFor="let meioDeTransporte of meiosTransporte" [value]="meioDeTransporte.key">
+                {{meioDeTransporte.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="inputs_botoes_select">
+            <mat-select #multipleSelect multiple [compareWith]="compareItens" placeholder="Selecione os itens que vai levar" [(ngModel)]="ItensTemporaros">
+              <mat-option *ngFor="let item of itens" [value]="item">
+                {{item.nomeItem}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+          <button (click)="salvarUsuario()" class="botao">Enviar</button>
+</section>
+
+<section class="inputs_pesquisa">
+  <mat-form-field class="inputs_botoes_pesquisa">
+      <mat-label>Pesquisar por Nome</mat-label>
+      <input matInput placeholder="Digite o nome para pesquisar" [(ngModel)]="pesquisaNome" (input)="filtrarUsuarios()">
+  </mat-form-field>
+</section>
+
+<section class="tabela">
+
+  <table mat-table [dataSource]="listaUsuarios" class="mat-elevation-z8">
+
+    <!-- Coluna de Nome -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+    </ng-container>
+  
+    <!-- Coluna de Email -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+  
+    <!-- Coluna de Meios de Transporte -->
+    <ng-container matColumnDef="tipoTransporte">
+      <th mat-header-cell *matHeaderCellDef> Meio de Transporte </th>
+      <td mat-cell *matCellDef="let element"> {{gerarMeioTransporte(element.tipoTransporte)}} </td>
+    </ng-container>
+  
+    <!-- Coluna de Itens -->
+    <ng-container matColumnDef="listaItens">
+      <th mat-header-cell *matHeaderCellDef> Itens para levar </th>
+      <td mat-cell *matCellDef="let element"> {{element.listaItens | listaItens}} </td>
+    </ng-container>
+
+    <!-- Editar -->
+    <ng-container matColumnDef="editar">
+      <th mat-header-cell *matHeaderCellDef> Editar </th>
+      <td mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="editarUsuario(element)">
+              <mat-icon>edit</mat-icon>
+          </button>
+      </td>
+    </ng-container>
+
+     <!-- Deletar -->
+     <ng-container matColumnDef="deletar">
+      <th mat-header-cell *matHeaderCellDef> Deletar </th>
+      <td mat-cell *matCellDef="let element"> 
+          <button mat-icon-button (click)="deletarUsuario(element.id)">
+              <mat-icon>delete</mat-icon>
+          </button> 
+        </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+</section>
+

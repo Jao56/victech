@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.inputs{
+    margin: 5em 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.inputs_pesquisa{
+    margin: 2em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.inputs_botoes{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    margin-bottom: 30px
+}
+
+.inputs_botoes_select{
+    width: 450px;
+    height: 75px;
+}
+
+.inputs_botoes_pesquisa{
+  width: 60%;
+  height: 75px;
+}
+
+.botao{
+    font-family: "Montserrat", sans-serif;
+    width: 10%;
+    height: 40px;
+    border-radius: 5px;
+    border-color: transparent;
+    font-size: 20px;
+    background-color: #006043;
+    
+    color: white;  
+    transition: 0.3s;
+    &:hover{
+        background-color: #048f65;
+        box-shadow: 0 0 5px #006043;
+        cursor: pointer;
+    }
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled){
+    background-color: transparent ;
+    border: solid 1.5px #006043 ;
+    border-radius: 10px ;
+}
+
+.tabela{
+    margin: 5em;
+    padding-bottom: 5em;
+}
+
+.tabela {
+    margin: 20px;
+  }
+  
+  .tabela table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tabela th,
+  .tabela td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .tabela th {
+    background-color: #006043; /* Cor verde para o cabeçalho */
+    color: white;
+  }
+  
+  .tabela .mat-header-cell {
+    text-align: center;
+  }
+  
+  .tabela .mat-cell {
+    text-align: center;
+  }
+
+  .tabela tr:hover {
+    border: 2px solid #003b2a;
+  }
+  
